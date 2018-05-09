@@ -1,17 +1,9 @@
 <template>
     <div class="wrapper">
     <swiper :options="swiperOption">
-      <!-- slides -->
-      <swiper-slide>
-      <img class="swiper-img" src="https://img1.qunarzz.com/vc/af/f4/45/4756cd165e1462610598ceb201.png" />
+      <swiper-slide v-for="item of list" :key="item.id">
+      <img class="swiper-img" :src="item.imgUrl" />
       </swiper-slide>
-      <swiper-slide>
-      <img class="swiper-img" src="https://img1.qunarzz.com/vc/31/cc/75/3c014d49de263aea6bf9bffeda.png" />
-      </swiper-slide>
-      <swiper-slide>
-      <img class="swiper-img" src="https://img1.qunarzz.com/vc/af/f4/45/4756cd165e1462610598ceb201.png" />
-      </swiper-slide>
-      <!-- Optional controls -->
       <div class="swiper-pagination"  slot="pagination"></div>
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div>
@@ -22,6 +14,9 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
